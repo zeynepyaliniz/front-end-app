@@ -210,17 +210,18 @@ function DashboardContent() {
                     <Toolbar />
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={3}>
-                            {/* Chart */}
                             <Grid item xs={12} md={12} lg={12}>
                                 <Paper
                                     sx={{
                                         p: 2,
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        height: 240,
+                                        height: 500,
                                     }}
                                 >
                                    {selectedItem===0 && (<Deposits></Deposits>)} 
+                                   {selectedItem===1 && (<Chart></Chart>)} 
+                                   {selectedItem===2 && (<Orders></Orders>)} 
                                 </Paper>
                             </Grid>                            
                         </Grid>
