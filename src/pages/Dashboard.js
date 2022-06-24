@@ -26,6 +26,7 @@ import { styled } from '@mui/material/styles';
 import { Button, FormControlLabel, FormGroup, Menu, MenuItem, Switch } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import SearchAppBar from '../components/SearchAppBar';
+import SelectedListItem from '../components/CustomListItems';
 
 const drawerWidth = 240;
 
@@ -95,6 +96,11 @@ function DashboardContent() {
         setAuth(false)
 
     };
+    const [selectedItem,setSelectedItem] = React.useState(0);
+    const handleSelectedItem=(item)=>{
+        debugger
+        setSelectedItem(item);
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -186,9 +192,7 @@ function DashboardContent() {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        {mainListItems}
-                        <Divider sx={{ my: 1 }} />
-                        {secondaryListItems}
+                        <SelectedListItem handleSelectedItem= {handleSelectedItem}></SelectedListItem>
                     </List>
                 </Drawer>
                 <Box
@@ -207,7 +211,7 @@ function DashboardContent() {
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={3}>
                             {/* Chart */}
-                            <Grid item xs={12} md={8} lg={9}>
+                            <Grid item xs={12} md={12} lg={12}>
                                 <Paper
                                     sx={{
                                         p: 2,
@@ -216,28 +220,9 @@ function DashboardContent() {
                                         height: 240,
                                     }}
                                 >
-                                    <Chart />
+                                   {selectedItem===0 && (<Deposits></Deposits>)} 
                                 </Paper>
-                            </Grid>
-                            {/* Recent Deposits */}
-                            <Grid item xs={12} md={4} lg={3}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 240,
-                                    }}
-                                >
-                                    <Deposits />
-                                </Paper>
-                            </Grid>
-                            {/* Recent Orders */}
-                            <Grid item xs={12}>
-                                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                                    <Orders />
-                                </Paper>
-                            </Grid>
+                            </Grid>                            
                         </Grid>
                         <Copyright sx={{ pt: 4 }} />
                     </Container>
