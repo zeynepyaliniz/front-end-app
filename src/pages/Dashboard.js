@@ -25,6 +25,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import { Button, FormControlLabel, FormGroup, Menu, MenuItem, Switch } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import SearchAppBar from '../components/SearchAppBar';
 
 const drawerWidth = 240;
 
@@ -116,7 +117,7 @@ function DashboardContent() {
                             }}
                         >
                             <MenuIcon />
-                        </IconButton>
+                        </IconButton>                        
                         <Typography
                             component="h1"
                             variant="h6"
@@ -124,8 +125,9 @@ function DashboardContent() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Dashboard
+                            Dashboard                            
                         </Typography>
+                        <SearchAppBar></SearchAppBar>
                         {auth && (
                             <div>
                                 <IconButton
